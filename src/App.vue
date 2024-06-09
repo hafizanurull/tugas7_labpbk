@@ -6,7 +6,7 @@
              class="border p-2 w-full rounded"/>
       <button @click="addTodo" class="bg-blue-500 text-white px-4 py-2 mt-2 rounded hover:bg-blue-700">Add</button>
     </div>
-    <ul>
+    <ul v-if="todos.length > 0">
       <li v-for="(todo, index) in todos" :key="index" class="flex items-center mb-2">
         <input type="checkbox" v-model="todo.done" @change="toggleTodoStatus(index)"
                class="mr-2"/>
@@ -14,6 +14,7 @@
         <button @click="removeTodo(index)" class="bg-red-500 text-white px-2 py-1 rounded hover:bg-red-700">Remove</button>
       </li>
     </ul>
+    <p v-else class="text-gray-500">No tasks available.</p>
     <p class="mt-4">Total incomplete tasks: {{ incompleteTodos }}</p>
   </div>
 </template>
